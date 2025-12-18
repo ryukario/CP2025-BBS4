@@ -218,8 +218,10 @@ function renderPosts(posts) {
         postsDiv.html('<p class="no-posts">投稿はありません</p>');
         return;
     }
+    
 
     posts.forEach((post) => {
+        
         postsDiv.append(createPostElement(post));
     });
 }
@@ -482,7 +484,13 @@ $(function() {
         // 投稿内容をフォームから取得
         const authorVal = $('#authorInput').val();
         const contentVal = $('#contentInput').val();
-        createPost(authorVal, contentVal);
+        if('1' === contentVal){
+        post = 'おはよう';
+        createPost(authorVal, post);
+        }else{
+            createPost(authorVal, contentVal);
+        }
+        
     });
 
     $('#loginButton').on('click', () => {
