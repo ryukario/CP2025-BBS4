@@ -145,13 +145,19 @@ function escapeHtml(str) {
 // タイムスタンプのフォーマット
 function formatTimestamp(timestamp) {
     const date = new Date(timestamp);
-    return date.toLocaleString('ja-JP', {
+    const date2 = new Date();
+    var dd = (date2 - date) / (24*60*60*1000);
+    /*return date.toLocaleString('ja-JP', {
         year: 'numeric',
         month: '2-digit',
         day: '2-digit',
         hour: '2-digit',
         minute: '2-digit'
-    });
+    });*/
+    return dd.toLocaleString('ja-JP',{
+        day: '2-dight'
+        });
+        
 }
 
 // 投稿の編集権限チェック
@@ -197,7 +203,7 @@ function createPostElement(post) {
             </div>
             <div class="post-footer">
                 <span class="post-time">
-                    ${formatTimestamp(post.timestamp)}
+                    ${formatTimestamp(post.timestamp) + "日前"}
                 </span>
                 ${post.updatedAt ? `
                     <span class="post-updated">
