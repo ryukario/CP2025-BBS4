@@ -147,6 +147,7 @@ function formatTimestamp(timestamp) {
     const date = new Date(timestamp);
     const date2 = new Date();
     var dd = (date2 - date) / (24*60*60*1000);
+    dd = Math.floor(dd);
     /*return date.toLocaleString('ja-JP', {
         year: 'numeric',
         month: '2-digit',
@@ -154,9 +155,11 @@ function formatTimestamp(timestamp) {
         hour: '2-digit',
         minute: '2-digit'
     });*/
-    return dd.toLocaleString('ja-JP',{
-        day: '2-dight'
-        });
+        /*dd.extend(dd_plugin_relativeTime)
+        dd.locale("ja")
+        dd().fromNow()*/
+        return dd + "日前";
+
         
 }
 
@@ -203,7 +206,7 @@ function createPostElement(post) {
             </div>
             <div class="post-footer">
                 <span class="post-time">
-                    ${formatTimestamp(post.timestamp) + "日前"}
+                    ${formatTimestamp(post.timestamp)}
                 </span>
                 ${post.updatedAt ? `
                     <span class="post-updated">
