@@ -158,6 +158,10 @@ function formatTimestamp(timestamp) {
         /*dd.extend(dd_plugin_relativeTime)
         dd.locale("ja")
         dd().fromNow()*/
+        if(dd <= 1){
+            dd = 0;
+        }
+
         return dd + "日前";
 
         
